@@ -1,2 +1,16 @@
+$(() => {
+  console.log('JS Loaded');
 
-[10,20,30].forEach(num => console.log(num));
+  const $cells = $('li');
+  // const currentCell = n;
+
+const snake = {
+  sq1: 0,
+}
+
+
+
+forEach(cell, i) => {
+  if (Object.values(snake).includes(i)) $(cell).addClass('red');
+  else $(cell).removeClass('red');
+}
