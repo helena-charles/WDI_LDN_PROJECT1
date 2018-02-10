@@ -6,10 +6,11 @@ $(() => {
   const width = 10;
   const height = 10;
 
-  const snake = [0,1,2];
+  const snake = [95,85,75];
 
   let n = snake.slice(-1)[0];
   // console.log(n);
+  let snakeTimer = null;
 
   function whiteClass() {
     cells.forEach((cell, i) => {
@@ -21,19 +22,16 @@ $(() => {
     });
   }
 
-  let snakeTimer = null;
-
   function moveRight() {
     if (!(n % width === width -1)) {
       console.log('this is the head of the snake' + n);
-      snake.push(n ++);
-      // n++;
+      snake.push(n += 1);
       // console.log('this is the snake after push' + snake);
       snake.shift();
       // console.log('this is the snake after shift' + snake);
       whiteClass();
     } else {
-      setTimeout(moveRight, 1000);
+      clearInterval(snakeTimer);
       console.log('finished');
     }
   }
@@ -41,15 +39,15 @@ $(() => {
   function moveLeft() {
     if (!(n % width === 0)) {
       console.log('this is the head of the snake: ' + n);
-      snake.push(n - 1);
-      n--;
-      console.log('this is the snake after push: ' + snake);
+      snake.push(n -= 1);
+      // n--;
+      // console.log('this is the snake after push: ' + snake);
       snake.shift();
-      console.log('this is the snake after shift: ' + snake);
+      // console.log('this is the snake after shift: ' + snake);
       whiteClass();
     } else {
       console.log('finished');
-      setTimeout(moveLeft);
+      clearInterval(snakeTimer);
     }
   }
 
@@ -58,13 +56,13 @@ $(() => {
       console.log('this is the head of the snake: ' + n);
       snake.push(n + 10);
       n += 10;
-      console.log('this is the snake after push: ' + snake);
+      // console.log('this is the snake after push: ' + snake);
       snake.shift();
-      console.log('this is the snake after shift: ' + snake);
+      // console.log('this is the snake after shift: ' + snake);
       whiteClass();
     } else {
       console.log('finished');
-      setTimeout(moveDown);
+      clearInterval(snakeTimer);
     }
   }
 
@@ -73,18 +71,15 @@ $(() => {
       console.log('this is the head of the snake: ' + n);
       snake.push(n - 10);
       n -= 10;
-      console.log('this is the snake after push: ' + snake);
+      // console.log('this is the snake after push: ' + snake);
       snake.shift();
-      console.log('this is the snake after shift: ' + snake);
+      // console.log('this is the snake after shift: ' + snake);
       whiteClass();
     } else {
       console.log('finished');
-      setTimeout(moveUp);
+      clearInterval(snakeTimer);
     }
   }
-
-  snakeTimer = setInterval(moveRight, 500);
-
 
   function placeRandomFood() {
     const randomFood = Math.ceil(Math.random() * 99);
@@ -94,20 +89,10 @@ $(() => {
     });
   }
 
-  // function randomFoodTimeout() {
-  //   if (cell.classList.contains('purple')) cell.classList.remove('purple');
-  // }
-
-  // let foodTimer = null;
+  snakeTimer = setInterval(moveUp, 500);
 
   placeRandomFood();
   whiteClass();
-  cells.forEach((cell) => {
-    if (cell.classList.contains('purple')) {
-      placeRandomFood();
-      console.log('hello');
-    }
-  });
 
   // document.addEventListener('keydown', (e) => {
   //   const keyName = e.key;
@@ -122,20 +107,14 @@ $(() => {
   //   }
   // });
 
-  //moveRight();
 
-  // function randomFoodTimeout() {
-  //   cells.forEach((cell) => {
-  //     cell.classList.remove('purple');
-  //   });
-  // }
+  cells.forEach((cell) => {
+    if ((cell.classList.contains('purple')) && (cell.classList.contains('white'))) {
+      console.log('contains purple and white');
+    }
+  });
 
-  // setTimeout(placeRandomFood, 500);
+  console.log((randomFood.classList.contains('purple')) && (randomFood.classList.contains('white')));
 
-  // cells.forEach((cell) => {
-  //   if ((cell.classList.contains('purple')) && (cell.classList.contains('white'))) {
-  //     console.log('contains purple and white');
-  //   }
-  // });
 
 });
