@@ -67,3 +67,6 @@ const wordsArray = [
     hint: ['Furry animal with 4 legs, ']
   }
 ];
+
+// determine direction snake is moving in and when the snake is 1 cell away (10 if vertical) then eat the food
+// change snake to class for ease of using methods like "where is the snake"

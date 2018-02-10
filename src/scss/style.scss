@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
   body {
+    background-color: pink;
     .white {
-      background-color: white;
+      background-color: white !important;
     }
     .purple {
       background-color: purple;
     }
-    background-color: pink;
+    #score {
+      font-size: 5rem;
+    }
     h1 {
       color: white;
       text-align: center;

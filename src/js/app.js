@@ -5,6 +5,8 @@ $(() => {
   const cells = [].slice.call($cells);
   const width = 10;
   const height = 10;
+  const $score = $('#score');
+  let score = 0;
 
   const snake = [95,85,75];
 
@@ -67,6 +69,7 @@ $(() => {
   }
 
   function moveUp() {
+
     if (!(n - width < 0)) {
       console.log('this is the head of the snake: ' + n);
       snake.push(n - 10);
@@ -85,11 +88,31 @@ $(() => {
     const randomFood = Math.ceil(Math.random() * 99);
     // console.log(randomFood);
     cells.forEach((cell, i) => {
-      if (randomFood === i) cell.classList.add('purple');
+      if (55 === i) cell.classList.add('purple');
     });
   }
 
-  snakeTimer = setInterval(moveUp, 500);
+  function eatFood() {
+    score += 1;
+    $score.text(score);
+    const foodIndex = $('.purple.white').index();
+    console.log(foodIndex);
+    $('.purple.white').removeClass('purple');
+    // placeRandomFood();
+    snake.unshift(85);
+    whiteClass();
+    console.log(snake);
+  }
+
+  function setIntervalCallback() {
+    if($('.purple.white').length) {
+      console.log('is on food');
+      eatFood();
+    }
+    moveUp();
+  }
+
+  snakeTimer = setInterval(setIntervalCallback, 500);
 
   placeRandomFood();
   whiteClass();
@@ -108,13 +131,13 @@ $(() => {
   // });
 
 
-  cells.forEach((cell) => {
-    if ((cell.classList.contains('purple')) && (cell.classList.contains('white'))) {
-      console.log('contains purple and white');
-    }
-  });
+  // cells.forEach((cell) => {
+  //   if ((cell.classList.contains('purple')) && (cell.classList.contains('white'))) {
+  //     console.log('contains purple and white');
+  //   }
+  // });
 
-  console.log((randomFood.classList.contains('purple')) && (randomFood.classList.contains('white')));
+  // console.log((randomFood.classList.contains('purple')) && (randomFood.classList.contains('white')));
 
 
 });
