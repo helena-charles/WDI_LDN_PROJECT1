@@ -75,7 +75,7 @@ gulp.task('js', ['clean:js'], done => {
     babel({
       presets: ['env']
     }),
-    uglify(),
+    // uglify(),
     gulpIf(!global.production, sourcemaps.write()),
     gulp.dest('public/js')
   ], done);
