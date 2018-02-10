@@ -70,3 +70,57 @@ const wordsArray = [
 
 // determine direction snake is moving in and when the snake is 1 cell away (10 if vertical) then eat the food
 // change snake to class for ease of using methods like "where is the snake"
+
+
+
+
+// const randomFood = Math.ceil(Math.random() * 99);
+
+
+function placeRandomFood() {
+
+  cells.forEach((cell, i) => {
+
+  });
+}
+
+setInterval(randomFood, 1000);
+
+// add extra number onto snake to stop it being too short
+
+
+
+// if number of
+
+
+// if cell has class snake --> do not spawn food there
+
+// if snake eats food, spawn new food
+// if (cells.classList.contains(!purple)) {
+// placeRandomFood();
+// }
+
+
+// if
+
+// function randomFoodTimeout() {
+//   if (cell.classList.contains('purple')) cell.classList.remove('purple');
+// }
+
+// let foodTimer = null;
+
+// function randomFoodTimeout() {
+//   cells.forEach((cell) => {
+//     cell.classList.remove('purple');
+//   });
+// }
+
+
+// clearInterval(placeRandomFood, 500);
+
+// cells.forEach((cell) => {
+//   if (cell.classList.contains('purple')) {
+//     placeRandomFood();
+//     console.log('hello');
+//   }
+// });
