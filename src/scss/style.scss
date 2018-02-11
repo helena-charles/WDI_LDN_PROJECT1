@@ -3,7 +3,8 @@
   body {
     background-color: pink;
     .white {
-      background-color: white !important;
+      background-color: white;
+      // background-color: white !important;
     }
     .purple {
       background-color: purple;
@@ -29,7 +30,8 @@
         width: 50px;
         font-size: 30px;
         line-height: 30px;
+        border-radius: 10px;
+        }
       }
     }
   }
-}

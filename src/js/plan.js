@@ -124,3 +124,12 @@ setInterval(randomFood, 1000);
 //     console.log('hello');
 //   }
 // });
+
+
+
+
+// varibale in top of code
+// modify, contain directions
+// change that on keypress
+// use that to determine up down left right on timer
+// when eat food determine same variable to know when it's about to eat food
