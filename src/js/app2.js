@@ -20,7 +20,7 @@ $(() => {
   function placeRandomLetter() {
     const letters = ['L', 'E', 'T', 'T', 'E', 'R', 'S'];
     const letterIndex = Math.floor(Math.random() * letters.length);
-    const randomCell = Math.ceil(Math.random() * 99);
+    const randomCell = Math.floor(Math.random() * 100);
     letters.forEach((letter, i) => {
       if (letterIndex === i) {
         cells.forEach((cell, i) => {
@@ -29,8 +29,8 @@ $(() => {
             cell.innerHTML = letter;
           }
         });
-        console.log(letterIndex);
-        console.log(randomCell);
+        console.log('the letter index is: ' + letterIndex);
+        console.log('the random cell is: ' + randomCell);
       }
     });
   }
@@ -43,8 +43,8 @@ $(() => {
   $cells.on('click', (e) => {
     wordArray.push(e.target.innerHTML);
     placeRandomLetter();
-    console.log(e.target.className);
-    $(e.target).removeClass('.purple');
+    $(e.target).removeClass('purple');
+    e.target.innerHTML = '';
     console.log(wordArray);
   });
 
