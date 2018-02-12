@@ -4,38 +4,32 @@ const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
-const clean = require('gulp-clean');
+const del = require('del');
 const browserSync = require('browser-sync').create();
 const gulpIf = require('gulp-if');
 
 gulp.task('clean:css', () => {
-  return gulp.src('public/css', { read: false })
-    .pipe(clean());
+  return del(['public/css']);
 });
 
 gulp.task('clean:js', () => {
-  return gulp.src('public/js', { read: false })
-    .pipe(clean());
+  return del(['public/js']);
 });
 
 gulp.task('clean:html', () => {
-  return gulp.src('public/index.html', { read: false })
-    .pipe(clean());
+  return del(['public/index.html']);
 });
 
 gulp.task('clean:fonts', () => {
-  return gulp.src('public/fonts/**', { read: false })
-    .pipe(clean());
+  return del(['public/fonts/**']);
 });
 
 gulp.task('clean:images', () => {
-  return gulp.src('public/images/**', { read: false })
-    .pipe(clean());
+  return del(['public/images/**']);
 });
 
 gulp.task('clean:sounds', () => {
-  return gulp.src('public/sounds/**', { read: false })
-    .pipe(clean());
+  return del(['public/sounds/**']);
 });
 
 gulp.task('fonts', ['clean:fonts'], () => {
@@ -70,7 +64,7 @@ gulp.task('css', ['clean:css'], done => {
 
 gulp.task('js', ['clean:js'], done => {
   pump([
-    gulp.src('src/js/app.js'),
+    gulp.src('src/js/app2.js'),
     gulpIf(!global.production, sourcemaps.init()),
     babel({
       presets: ['env']
@@ -81,7 +75,7 @@ gulp.task('js', ['clean:js'], done => {
   ], done);
 });
 
-gulp.task('build', ['fonts', 'images', 'sounds', 'html', 'css', 'js']);
+gulp.task('build', ['images', 'sounds', 'html', 'css', 'js']);
 
 gulp.task('deploy', () => {
   global.production = true;
@@ -94,7 +88,7 @@ gulp.task('default', ['build'], () => {
   gulp.watch('src/sounds/**', ['sounds']);
   gulp.watch('src/index.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/scss/style.scss', ['css']).on('change', browserSync.reload);
-  gulp.watch('src/js/app.js', ['js']).on('change', browserSync.reload);
+  gulp.watch('src/js/app2.js', ['js']).on('change', browserSync.reload);
 
   browserSync.init({
     server: './public',

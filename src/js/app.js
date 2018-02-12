@@ -120,8 +120,11 @@ $(() => {
   placeRandomFood();
   whiteClass();
 
+  // if ($('.white') && ('.white')) {
+  //   console.log('YOU LOSE!');
+  // }
 
-
+  // if snake contains same element twice
 
 
 

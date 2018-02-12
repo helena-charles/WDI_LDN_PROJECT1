@@ -140,16 +140,6 @@ setInterval(randomFood, 1000);
 // check which direction
 // set and get methods for direction on snake
 
-// next to snake variable
-// new varibale called direction
-// assign string calue to it
-// value = 'right'
-
-// event listener - value direction = up down left right
-
-// set interval callback -- call based on value of directions
-// if direction === left, moveLeft()
-
 
 
 
