@@ -16,37 +16,45 @@ $(() => {
 
   // let snakeTimer = null;
 
-
+  const letters = ['L', 'E', 'T', 'T', 'E', 'R', 'S'];
   function placeRandomLetter() {
-    const letters = ['L', 'E', 'T', 'T', 'E', 'R', 'S'];
-    const letterIndex = Math.floor(Math.random() * letters.length);
     const randomCell = Math.floor(Math.random() * 100);
+    const letterIndex = Math.floor(Math.random() * letters.length);
     letters.forEach((letter, i) => {
       if (letterIndex === i) {
-        cells.forEach((cell, i) => {
-          if (randomCell === i) {
-            cell.classList.add('purple');
-            cell.innerHTML = letter;
-          }
-        });
-        console.log('the letter index is: ' + letterIndex);
-        console.log('the random cell is: ' + randomCell);
+        cells[randomCell].innerHTML = letter;
+        cells[randomCell].classList.add('purple');
+        //
+        // cells.forEach((cell, i) => {
+        //   if (randomCell === i) {
+        //     cell.classList.add('purple');
+        //     cell.innerHTML = letter;
       }
     });
+    console.log('the letter index is: ' + letterIndex);
+    console.log('the random cell is: ' + randomCell);
+    clickEvent();
   }
+
+  //   });
+  // }
 
   // snakeTimer = setInterval(setIntervalCallback, 500);
 
   placeRandomLetter();
 
-
-  $cells.on('click', (e) => {
-    wordArray.push(e.target.innerHTML);
-    placeRandomLetter();
-    $(e.target).removeClass('purple');
-    e.target.innerHTML = '';
-    console.log(wordArray);
-  });
-
-
+  function clickEvent() {
+    cells.forEach((cell) => {
+      if ($(cell).hasClass('purple')) {
+        $(cell).on('click', (e) => {
+          wordArray.push(e.target.innerHTML);
+          $(e.target).removeClass('purple');
+          e.target.innerHTML = '';
+          placeRandomLetter();
+          $(cell).off('click');
+          console.log(wordArray);
+        });
+      }
+    });
+  }
 });
