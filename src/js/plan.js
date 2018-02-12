@@ -133,3 +133,32 @@ setInterval(randomFood, 1000);
 // change that on keypress
 // use that to determine up down left right on timer
 // when eat food determine same variable to know when it's about to eat food
+
+// if arrowDown is clicked, change function inside setIntervalCallback to moveRight etc
+
+// change value of variable on keypress to say which direction
+// check which direction
+// set and get methods for direction on snake
+
+// next to snake variable
+// new varibale called direction
+// assign string calue to it
+// value = 'right'
+
+// event listener - value direction = up down left right
+
+// set interval callback -- call based on value of directions
+// if direction === left, moveLeft()
+
+
+
+
+
+
+
+// Stop snake from hitting itself
+// stop snake from moving after losing
+// change grid - no borders
+// change food
+
+// work on game logic for word game

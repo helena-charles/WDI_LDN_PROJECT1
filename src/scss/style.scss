@@ -16,6 +16,10 @@
       color: white;
       text-align: center;
     }
+    p {
+      display: block;
+      float:left;
+    }
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -24,6 +28,7 @@
       padding: 0;
       list-style: none;
       margin: auto;
+      // border: 1px solid;
       li {
         border: 1px solid;
         height: 50px;
