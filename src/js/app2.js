@@ -12,13 +12,6 @@ $(() => {
   // choose a random number between 1 and 3
   // choose the letter from the array that corresponds with the index of the random number
 
-
-  // const cat = {
-  //   letters: ['c','a','t'],
-  //   incorrectLetters: ['b', 'g', 'o'],
-  //   hint: ['Furry animal with whiskers, likes milk']
-  // };
-
   const wordsArray = [
     {
       letters: ['c','a','t'],
@@ -87,23 +80,50 @@ $(() => {
 
   placeRandomLetter();
 
+  const wordHolder = document.getElementsByClassName('wordHolder')[0];
+  const hold = document.createElement('ul');
+  wordHolder.appendChild(hold);
+  const guess = document.createElement('li');
+  hold.appendChild(guess);
+
+  const word = ['c', 'a', 't'];
+  // const $alphabetLi = $('.alphabetLi');
+  // const $guess = $('.guess');
+
   function clickEvent() {
     cells.forEach((cell) => {
       if ($(cell).hasClass('purple')) {
         $(cell).on('click', (e) => {
-          wordArray.push(e.target.innerHTML);
+          const text = e.target.innerHTML;
+          wordArray.push(text);
           $(e.target).removeClass('purple');
           e.target.innerHTML = '';
           placeRandomLetter();
           $(cell).off('click');
           console.log('the word array is: ' + wordArray);
           $wordInPlay.text(wordArray);
-          score += 1;
-          $score.text(score);
+          // score += 1;
+          // $score.text(score);
+
+          console.log('testing' + text);
+          const indexInWord = word.indexOf(text);
+          if (indexInWord !== -1) {
+            guess.eq(indexInWord).text(text);
+          }
         });
       }
     });
   }
+
+
+  //
+  // $alphabetLi.on('click', (e) => {
+  //   const text = e.target.innerHTML;
+  //   const indexInWord = word.indexOf(text);
+  //   if (indexInWord !== -1) {
+  //     $guess.eq(indexInWord).text(text);
+  //   }
+  // });
 
 
   // if the wordInPlay contains the chosen letter, change the inner HTML of wordHolder to reflect that

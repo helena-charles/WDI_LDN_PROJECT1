@@ -6,15 +6,12 @@ $(() => {
   const $guess = $('.guess');
 
 
-  // myButtons.forEach(button, i);
-  // for (var i = 0; i < $alphabetLi.length; i++) {
   $alphabetLi.on('click', (e) => {
-    word.forEach((word) => {
-      if (e.target.innerHTML === word) {
-        console.log('hello');
-        $guess.text(word);
-      }
-    });
+    const text = e.target.innerHTML;
+    const indexInWord = word.indexOf(text);
+    if (indexInWord !== -1) {
+      $guess.eq(indexInWord).text(text);
+    }
   });
 
 });
