@@ -38,21 +38,25 @@
 
 
 
-// class Words {
-//   constructor(word, correctLetters, incorrectLetters) {
+// class Word {
+//   constructor(word, correctLetters) {
 //     this.word = word;
 //     this.correctLetters = correctLetters;
-//     this.incorrectLetters = incorrectLetters;
+//     // this.incorrectLetters = incorrectLetters;
 //   }
 //   randomiseWord() {
-//     // randomise word from word list (array of objects?)
-//     return randomWord;
+//   // randomise word from word list (array of objects?)
+//   return randomWord;
 //   }
 // }
 //
+// const Cat = new Word('cat', ['c', 'a', 't']);
 // const Cat = new Word('cat', ['c', 'a', 't'], ['b', 'g', 'o']);
 
 
+
+// random index of the words Array
+// letters = wordsArray['randomIndex'].letters
 
 
 const wordsArray = [
@@ -77,14 +81,14 @@ const wordsArray = [
 // const randomFood = Math.ceil(Math.random() * 99);
 
 
-function placeRandomFood() {
-
-  cells.forEach((cell, i) => {
-
-  });
-}
-
-setInterval(randomFood, 1000);
+// function placeRandomFood() {
+//
+//   cells.forEach((cell, i) => {
+//
+//   });
+// }
+//
+// setInterval(randomFood, 1000);
 
 // add extra number onto snake to stop it being too short
 
@@ -141,14 +145,13 @@ setInterval(randomFood, 1000);
 // set and get methods for direction on snake
 
 
-
-
-
-
-
 // Stop snake from hitting itself
 // stop snake from moving after losing
 // change grid - no borders
 // change food
 
 // work on game logic for word game
+
+// function hasDuplicates(snake) {
+//   return (new Set(snake)).size !== snake.length;
+// }
