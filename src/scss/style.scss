@@ -1,14 +1,24 @@
 * {
   box-sizing: border-box;
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Nova Square', cursive;
   body {
     display: flex;
     justify-content: center;
+    .playAgainBtn {
+      display: flex;
+      justify-content: center;
+    button {
+      font-size: 20px;
+      margin-top: 10px;
+      border: 1px solid black;
+    }
+  }
     .wrapper {
       display: flex;
       justify-content: space-around;
       align-items: center;
       border: 1px solid black;
+      border-radius: 10px;
       // background-color: pink;
       padding-top: 10px;
       .score {
@@ -25,7 +35,7 @@
       background-color: white;
     }
     .pink {
-      background-color: pink;
+      // background-color: pink;
       text-align: center;
       // color: white;
     }
@@ -54,7 +64,7 @@
     ul {
       display: flex;
       flex-wrap: wrap;
-      width: 500px;
+      width: 502px;
       // margin: 0;
       padding: 0;
       list-style: none;
@@ -62,9 +72,10 @@
       border-radius: 10px;
       // line-height: 10px;
       // font-size: 10px;
+      border: 1px solid black;
       li {
         // background-color: pink;
-        border: 1px solid black;
+        // border: 1px solid black;
         height: 50px;
         width: 50px;
         font-size: 30px;
