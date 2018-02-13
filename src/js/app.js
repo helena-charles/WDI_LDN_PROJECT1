@@ -73,15 +73,15 @@ $(() => {
   function placeRandomFood() {
     const randomFood = Math.ceil(Math.random() * 99);
     cells.forEach((cell, i) => {
-      if (randomFood === i) cell.classList.add('purple');
+      if (randomFood === i) cell.classList.add('pink');
     });
   }
 
   function eatFood() {
     score += 1;
     $score.text(score);
-    const foodIndex = $('.purple.white').index();
-    $('.purple.white').removeClass('purple');
+    const foodIndex = $('.pink.white').index();
+    $('.pink.white').removeClass('pink');
     placeRandomFood();
     snake.unshift(foodIndex);
     whiteClass();
@@ -97,7 +97,7 @@ $(() => {
     } else if (direction === 'down') {
       moveDown();
     }
-    if($('.purple.white').length) {
+    if($('.pink.white').length) {
       eatFood();
     }
   }
