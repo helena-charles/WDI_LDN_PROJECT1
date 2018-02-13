@@ -81,12 +81,20 @@ $(() => {
   placeRandomLetter();
 
   const wordHolder = document.getElementsByClassName('wordHolder')[0];
+  const words = ['c', 'a', 't'];
+
   const hold = document.createElement('ul');
   wordHolder.appendChild(hold);
-  const guess = document.createElement('li');
-  hold.appendChild(guess);
 
-  const word = ['c', 'a', 't'];
+  words.forEach(() => {
+    const guess = document.createElement('li');
+    hold.appendChild(guess);
+    guess.innerHTML = '-';
+    console.log('testing');
+  });
+
+
+
   // const $alphabetLi = $('.alphabetLi');
   // const $guess = $('.guess');
 
@@ -105,16 +113,22 @@ $(() => {
           // score += 1;
           // $score.text(score);
 
-          console.log('testing' + text);
-          const indexInWord = word.indexOf(text);
-          if (indexInWord !== -1) {
-            guess.eq(indexInWord).text(text);
-          }
+          // console.log('testing' + text);
         });
       }
     });
   }
+  words.forEach((word) => {
 
+    $(word).on('click', (e) => {
+      const text = e.target.innerHTML;
+      const indexInWord = words.indexOf(text);
+      console.log('clicking');
+      if (indexInWord !== -1) {
+        guess.eq(indexInWord).text(text);
+      }
+    });
+  });
 
   //
   // $alphabetLi.on('click', (e) => {
