@@ -1,7 +1,7 @@
 $(() => {
   console.log('JS Loaded');
 
-  const $cells = $('li');
+  const $cells = $('.boardLi');
   const cells = [].slice.call($cells);
   const $score = $('#score');
   let score = 0;
@@ -106,7 +106,7 @@ $(() => {
   }
 
 
-
+  // if the wordInPlay contains the chosen letter, change the inner HTML of wordHolder to reflect that
 
 
 });

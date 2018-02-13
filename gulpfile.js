@@ -64,7 +64,7 @@ gulp.task('css', ['clean:css'], done => {
 
 gulp.task('js', ['clean:js'], done => {
   pump([
-    gulp.src('src/js/app2.js'),
+    gulp.src('src/js/app3.js'),
     gulpIf(!global.production, sourcemaps.init()),
     babel({
       presets: ['env']
@@ -88,7 +88,7 @@ gulp.task('default', ['build'], () => {
   gulp.watch('src/sounds/**', ['sounds']);
   gulp.watch('src/index.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/scss/style.scss', ['css']).on('change', browserSync.reload);
-  gulp.watch('src/js/app2.js', ['js']).on('change', browserSync.reload);
+  gulp.watch('src/js/app3.js', ['js']).on('change', browserSync.reload);
 
   browserSync.init({
     server: './public',
