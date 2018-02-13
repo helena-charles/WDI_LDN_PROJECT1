@@ -3,69 +3,67 @@ $(() => {
 
   const $cells = $('.boardLi');
   const cells = [].slice.call($cells);
-  const $score = $('#score');
-  let score = 0;
-  const wordArray = [];
+  // const $score = $('#score');
+  // let score = 0;
+  const currentLetters = [];
   const $hint = $('#hint');
-  const $wordInPlay = $('#wordInPlay');
-
-  // choose a random number between 1 and 3
-  // choose the letter from the array that corresponds with the index of the random number
 
   const wordsArray = [
     {
       letters: ['c','a','t'],
-      // incorrectLetters: ['b', 'g', 'o'],
-      hint: 'Furry animal with whiskers, likes milk'
+      incorrectLetters: ['b', 'g', 'o'],
+      hint: 'Likes milk.'
     },
     {
       letters: ['f','i','s','h'],
-      // incorrectLetters: ['b', 'g', 'o'],
-      hint: 'Lives in a bowl, short memory span'
+      incorrectLetters: ['b', 'g', 'o'],
+      hint: 'Lives in a bowl, short memory span.'
     },
     {
       letters: ['r','a','b','b','i','t'],
-      // incorrectLetters: ['b', 'g', 'o'],
-      hint: 'Likes carrots, twitchy nose'
+      incorrectLetters: ['b', 'g', 'o'],
+      hint: 'Likes carrots, twitchy nose.'
     },
     {
       letters: ['h','a','m','s','t','e','r'],
-      // incorrectLetters: ['b', 'g', 'o'],
-      hint: 'Likes running in a wheel, sleeps in hay'
+      incorrectLetters: ['b', 'g', 'o'],
+      hint: 'Runs in a wheel, sleeps in hay.'
     },
     {
       letters: ['d','o','g'],
-      // incorrectLetters: ['p', 'e', 'l'],
-      hint: 'The goodest boy ever'
+      incorrectLetters: ['p', 'e', 'l'],
+      hint: 'The goodest boy ever.'
     }
   ];
 
   const randomWordFinder = Math.floor(Math.random() * wordsArray.length);
-  const randomWord = wordsArray[randomWordFinder].letters;
-  console.log('the random word is: ' + randomWord);
+  const randomWordCorrect = wordsArray[randomWordFinder].letters;
+  const randomWordIncorrect = wordsArray[randomWordFinder].incorrectLetters;
+  console.log('the random word is: ' + randomWordCorrect);
 
   const wordHint = wordsArray[randomWordFinder].hint;
   console.log(wordHint);
   $hint.text(wordHint);
 
-
-
-  // let snakeTimer = null;
-
-  const letters = randomWord;
+  const letters = randomWordCorrect;
+  const incorrectLetters = randomWordIncorrect;
+  // let lastLetter;
 
   function placeRandomLetter() {
     const randomCell = Math.floor(Math.random() * 100);
     const letterIndex = Math.floor(Math.random() * letters.length);
+    const randomCell2 = Math.floor(Math.random() * 100);
+    const incorrectLetterIndex = Math.floor(Math.random() * incorrectLetters.length);
     letters.forEach((letter, i) => {
       if (letterIndex === i) {
         cells[randomCell].innerHTML = letter;
-        cells[randomCell].classList.add('purple');
-        //
-        // cells.forEach((cell, i) => {
-        //   if (randomCell === i) {
-        //     cell.classList.add('purple');
-        //     cell.innerHTML = letter;
+        cells[randomCell].classList.add('pink');
+      }
+    });
+    incorrectLetters.forEach((incorrectLetter, i) => {
+      if (incorrectLetterIndex === i) {
+        cells[randomCell2].innerHTML = incorrectLetter;
+        cells[randomCell2].classList.add('pink');
       }
     });
     console.log('the letter index is: ' + letterIndex);
@@ -73,74 +71,41 @@ $(() => {
     clickEvent();
   }
 
-  //   });
-  // }
-
-  // snakeTimer = setInterval(setIntervalCallback, 500);
-
   placeRandomLetter();
 
   const wordHolder = document.getElementsByClassName('wordHolder')[0];
-  const words = ['c', 'a', 't'];
 
   const hold = document.createElement('ul');
   wordHolder.appendChild(hold);
 
-  words.forEach(() => {
+  randomWordCorrect.forEach(() => {
     const guess = document.createElement('li');
     hold.appendChild(guess);
+    guess.classList.add('guess');
     guess.innerHTML = '-';
-    console.log('testing');
   });
 
 
-
-  // const $alphabetLi = $('.alphabetLi');
-  // const $guess = $('.guess');
-
   function clickEvent() {
     cells.forEach((cell) => {
-      if ($(cell).hasClass('purple')) {
+      if ($(cell).hasClass('pink')) {
         $(cell).on('click', (e) => {
           const text = e.target.innerHTML;
-          wordArray.push(text);
-          $(e.target).removeClass('purple');
+          currentLetters.push(text);
+          $(e.target).removeClass('pink');
           e.target.innerHTML = '';
           placeRandomLetter();
           $(cell).off('click');
-          console.log('the word array is: ' + wordArray);
-          $wordInPlay.text(wordArray);
-          // score += 1;
-          // $score.text(score);
-
-          // console.log('testing' + text);
+          console.log('the word array is: ' + currentLetters);
+          const indexInWord = randomWordCorrect.indexOf(text);
+          const guesses = document.querySelectorAll('.guess');
+          if (indexInWord !== -1) {
+            guesses[indexInWord].textContent = text;
+          }
         });
       }
     });
   }
-  words.forEach((word) => {
-
-    $(word).on('click', (e) => {
-      const text = e.target.innerHTML;
-      const indexInWord = words.indexOf(text);
-      console.log('clicking');
-      if (indexInWord !== -1) {
-        guess.eq(indexInWord).text(text);
-      }
-    });
-  });
-
-  //
-  // $alphabetLi.on('click', (e) => {
-  //   const text = e.target.innerHTML;
-  //   const indexInWord = word.indexOf(text);
-  //   if (indexInWord !== -1) {
-  //     $guess.eq(indexInWord).text(text);
-  //   }
-  // });
-
-
-  // if the wordInPlay contains the chosen letter, change the inner HTML of wordHolder to reflect that
 
 
 });

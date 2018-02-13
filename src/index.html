@@ -6,143 +6,142 @@
   <title>Snake</title>
   <script src="/js/app2.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
-  <h1>Snake</h1>
-  <div class="wordInPlay">
-    <p>Your current letters are: <span id="wordInPlay"></span></p>
-  </div>
-  <div class="wordHolder">
-    <!-- <ul id="hold">
-      <li class="guess">space</li>
-      <li class="guess">space</li>
-      <li class="guess">space</li>
-      <li class="guess">space</li>
-      <li class="guess">space</li>
-      <li class="guess">space</li>
-    </ul> -->
-  </div>
-  <div id="buttons">
-</div>
-    <div class="hint">
-    <p>Hint: <span id="hint"></span></p>
-  </div>
-  <div class="score">
-    <p>Your score is: <span id="score">0</span></p>
-  </div>
-  <div class="gameBoard">
-  <ul id="board">
-    <!-- Row 1 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 2 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 3 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 4 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 5 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 6 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 7 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 8 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 9 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <!-- Row 10 -->
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-    <li class="boardLi"></li>
-  </ul>
+  <div class="container">
+    <h1>Snake Words</h1>
+    <div class="wrapper">
+      <div class="score">
+        <p>Score: <span id="score">0</span></p>
+      </div>
+      <div class="columnWrapper">
+        <div class="hint">
+          <span>Hint: <span id="hint"></span></span>
+        </div>
+        <div class="wordHolder">
+        </div>
+      </div>
+      <div class="pause">
+        <a href="#"><i class="fa fa-pause"></i></a>
+      </div>
+    </div>
+    <div class="gameBoard">
+      <ul id="board">
+        <!-- Row 1 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 2 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 3 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 4 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 5 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 6 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 7 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 8 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 9 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <!-- Row 10 -->
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+        <li class="boardLi"></li>
+      </ul>
+    </div>
+    <button>Play again?</button>
   </div>
 </body>
 </html>
