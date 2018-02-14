@@ -31,16 +31,19 @@
     //     background-color: white;
     // }
     }
-    .white {
-      background-color: pink;
+    .green {
+      background-image: url(/images/normal-ant.png);
     }
-    .pink {
-      background-color: pink;
+    .yellow, .incorrectMF {
+      background-image: url(/images/crumb.png);
       text-align: center;
       // color: white;
     }
+    .snakeHead {
+      background-image: url(/images/queen-ant.png);
+    }
     h1 {
-      color: pink;
+      color: green;
       text-align: center;
     }
     .wordHolder {
@@ -78,8 +81,8 @@
         // border: 1px solid black;
         height: 50px;
         width: 50px;
-        font-size: 30px;
-        line-height: 30px;
+        font-size: 25px;
+        line-height: 40px;
         border-radius: 10px;
         }
       }

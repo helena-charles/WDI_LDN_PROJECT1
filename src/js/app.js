@@ -1,19 +1,22 @@
+
+// DOM Indepdent variables
+const width = 10;
+const height = 10;
+let score = 0;
+const snake = [0,1,2];
+let direction = 'right';
+let snakeTimer = null;
+
 $(() => {
   console.log('JS Loaded');
 
+  // DOM Depdendent Variables
   const $cells = $('li');
   const cells = [].slice.call($cells);
-  const width = 10;
-  const height = 10;
   const $score = $('#score');
-  let score = 0;
-  let direction = 'right';
-
-  const snake = [0,1,2];
-
   let n = snake.slice(-1)[0];
-  let snakeTimer = null;
 
+  // Snake creating function
   function whiteClass() {
     cells.forEach((cell, i) => {
       if (snake.includes(i)) {
@@ -24,6 +27,7 @@ $(() => {
     });
   }
 
+  // Moving functions
   function moveRight() {
     if (!(n % width === width -1)) {
       snake.push(n += 1);
@@ -70,6 +74,7 @@ $(() => {
     }
   }
 
+  // Placing random food function
   function placeRandomFood() {
     const randomFood = Math.ceil(Math.random() * 99);
     cells.forEach((cell, i) => {
@@ -77,6 +82,7 @@ $(() => {
     });
   }
 
+  // Eating food function
   function eatFood() {
     score += 1;
     $score.text(score);
@@ -87,6 +93,7 @@ $(() => {
     whiteClass();
   }
 
+  // Direction change function
   function setIntervalCallback() {
     if (direction === 'right') {
       moveRight();
@@ -102,6 +109,7 @@ $(() => {
     }
   }
 
+  // Keypress changing directions function
   document.addEventListener('keydown', (e) => {
     const keyName = e.key;
     if (keyName === 'ArrowUp') {
@@ -115,17 +123,11 @@ $(() => {
     }
   });
 
+  // Setting timer for snake to move
   snakeTimer = setInterval(setIntervalCallback, 500);
 
+  // Calling functions
   placeRandomFood();
   whiteClass();
-
-  // if ($('.white') && ('.white')) {
-  //   console.log('YOU LOSE!');
-  // }
-
-  // if snake contains same element twice
-
-
 
 });
