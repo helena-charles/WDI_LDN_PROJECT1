@@ -1,59 +1,75 @@
+
+// DOM Independent Variables
+const currentLetters = [];
+
 $(() => {
   console.log('JS Loaded');
 
+  // DOM Dependent Variables
   const $cells = $('.boardLi');
   const cells = [].slice.call($cells);
-  // const $score = $('#score');
-  // let score = 0;
-  const currentLetters = [];
   const $hint = $('#hint');
+  const wordHolder = document.getElementsByClassName('wordHolder')[0];
+  const $playAgainBtn = $('.playAgainBtn');
+  const hold = document.createElement('ul');
+  wordHolder.appendChild(hold);
 
   const wordsArray = [
     {
       letters: ['c','a','t'],
-      incorrectLetters: ['b', 'g', 'o'],
+      incorrectLetters: ['b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'u', 'v', 'w', 'x', 'y', 'z'],
       alreadyFoundCorrectLetters: [],
       hint: 'Likes milk.'
     },
     {
       letters: ['f','i','s','h'],
-      incorrectLetters: ['b', 'g', 'o'],
+      incorrectLetters: ['a', 'b', 'c', 'd', 'e', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
       alreadyFoundCorrectLetters: [],
       hint: 'Lives in a bowl, short memory span.'
     },
     {
-      letters: ['r','a','b','b','i','t'],
-      incorrectLetters: ['b', 'g', 'o'],
+      letters: ['r','a','t'],
+      incorrectLetters: ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'u', 'v', 'w', 'x', 'y', 'z'],
       alreadyFoundCorrectLetters: [],
-      hint: 'Likes carrots, twitchy nose.'
+      hint: 'Lives in sewers.'
     },
     {
       letters: ['h','a','m','s','t','e','r'],
-      incorrectLetters: ['b', 'g', 'o'],
+      incorrectLetters: ['b', 'c', 'd', 'f', 'g', 'i', 'j', 'k', 'l', 'n', 'o', 'p', 'q', 'u', 'v', 'w', 'x', 'y', 'z'],
       alreadyFoundCorrectLetters: [],
       hint: 'Runs in a wheel, sleeps in hay.'
     },
     {
       letters: ['d','o','g'],
-      incorrectLetters: ['p', 'e', 'l'],
+      incorrectLetters: ['a', 'b', 'c', 'e', 'f', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
       alreadyFoundCorrectLetters: [],
       hint: 'Man\'s best friend.'
     }
   ];
 
+  // Variables that rely on wordsArray
   const randomWordFinder = Math.floor(Math.random() * wordsArray.length);
   const randomWordCorrect = wordsArray[randomWordFinder].letters;
   const randomWordAlreadyFoundCorrect = wordsArray[randomWordFinder].alreadyFoundCorrectLetters;
   const randomWordIncorrect = wordsArray[randomWordFinder].incorrectLetters;
-  console.log('the random word is: ' + randomWordCorrect);
-
   const wordHint = wordsArray[randomWordFinder].hint;
-  console.log(wordHint);
+  const incorrectLetters = randomWordIncorrect;
   $hint.text(wordHint);
 
-  const incorrectLetters = randomWordIncorrect;
-  // let lastLetter;
 
+
+  // Creating empty guess spaces from length of word
+  randomWordCorrect.forEach(() => {
+    const guess = document.createElement('li');
+    hold.appendChild(guess);
+    guess.classList.add('guess');
+    guess.innerHTML = '-';
+  });
+
+  // Creating guesses array from all li with the class guess
+  const guesses = document.querySelectorAll('.guess');
+
+  // Function for placing random letter including clickEvent
   function placeRandomLetter() {
     const letters = randomWordCorrect.filter(l => randomWordAlreadyFoundCorrect.indexOf(l) === -1);
     const randomCell = Math.floor(Math.random() * 100);
@@ -75,32 +91,17 @@ $(() => {
         cells[randomCell2].classList.add('pink');
       }
     });
-    console.log('the letter index is: ' + letterIndex);
-    console.log('the random cell is: ' + randomCell);
     clickEvent();
   }
 
+  // Calling function initially
   placeRandomLetter();
 
-  const wordHolder = document.getElementsByClassName('wordHolder')[0];
-
-  const hold = document.createElement('ul');
-  wordHolder.appendChild(hold);
-
-  randomWordCorrect.forEach(() => {
-    const guess = document.createElement('li');
-    hold.appendChild(guess);
-    guess.classList.add('guess');
-    guess.innerHTML = '-';
-  });
-
-  const guesses = document.querySelectorAll('.guess');
-
+  // Click function
   function clickEvent() {
     cells.forEach((cell) => {
       if ($(cell).hasClass('pink')) {
         $(cell).on('click', (e) => {
-
           const text = e.target.innerHTML;
           currentLetters.push(text);
           $(e.target).removeClass('pink');
@@ -122,8 +123,7 @@ $(() => {
     });
   }
 
-  const $playAgainBtn = $('.playAgainBtn');
-
+  // Play again function click event
   $playAgainBtn.on('click', () => {
     $cells.html('');
     $(guesses).html('-');
