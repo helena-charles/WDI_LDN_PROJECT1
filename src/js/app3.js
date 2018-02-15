@@ -26,28 +26,28 @@ let randomWord = {};
 const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let wordsArray = [{
   answer: 'sandwich',
-  hint: 'Two pieces of bread with a filling between them.'
+  hint: 'TWO PIECES OF BREAD WITH A FILLING BETWEEN THEM.'
 },{
   answer: 'cake',
-  hint: 'Victoria sponge, carrot, coffee, chocolate.'
+  hint: 'VICTORIA SPONGE, CARROT, COFFEE, CHOCOLATE.'
 },{
-  answer: 'Ant',
-  hint: '6 legs, black body, live in colonies, worship their queen.'
+  answer: 'ant',
+  hint: '6 LEGS, LIVE IN COLONIES, WORSHIP THEIR QUEEN.'
 },{
   answer: 'picnic',
-  hint: 'Bring a blanket to the park, bring your food in a basket.'
+  hint: 'BRING A BLANKET TO THE PARK, BRING YOUR FOOD IN A BASKET.'
 },{
   answer: 'grass',
-  hint: 'Lawns are made of this green plant.'
+  hint: 'LAWNS ARE MADE OF THIS GREEN PLANT.'
 },{
   answer: 'blanket',
-  hint: 'Keeps you warm, good for sitting on grass.'
+  hint: 'KEEPS YOU WARM, GOOD FOR SITTING ON GRASS.'
 },{
   answer: 'basket',
-  hint: 'Can be made of wicker, good for carrying things.'
+  hint: 'CAN BE MADE OF WICKER, GOOD FOR CARRYING THINGS.'
 },{
   answer: 'jam',
-  hint: 'A sweet spread made from fruit and sugar.'
+  hint: 'A SWEET SPREAD MADE FROM FRUIT AND SUGAR.'
 }];
 
 function startGame() {
@@ -63,6 +63,8 @@ function startGame() {
   snakeTimer = setInterval(move, 500);
   updateLetters();
   placeLetters();
+  $container.removeClass('hidden');
+  $startGameScreen.addClass('hidden');
 }
 
 function endGame() {
@@ -71,8 +73,10 @@ function endGame() {
   $cells.removeClass('letter');
   $cells.text('');
   $livesHolder.text('0');
-  // $container.addClass('hidden');
-  // $endGameScreen.removeClass('hidden');
+  $container.addClass('hidden');
+  $endGameScreen.removeClass('hidden');
+  const gameOverSound = new Audio('/sounds/game-over.wav');
+  gameOverSound.play();
   // TODO: do other shit
 }
 
@@ -101,8 +105,8 @@ function decrementLives() {
 }
 
 function playMunch() {
-  const audio = new Audio('/sounds/spuk1.wav');
-  audio.play();
+  const munchSound = new Audio('/sounds/spuk1.wav');
+  munchSound.play();
 }
 
 function checkForLetter(nextCellIndex) {
@@ -201,6 +205,8 @@ function move() {
   if(direction === 'down') drawSnake(width);
 }
 
+
+
 $(() => {
   console.log('JS Loaded');
 
@@ -210,7 +216,8 @@ $(() => {
   $livesHolder = $('#lives');
   $hintHolder = $('#hint');
   $container = $('.container');
-  $endGameScreen = $('.endGame');
+  $endGameScreen = $('.endGameScreen');
+  $startGameScreen = $('.startGameScreen');
 
   $scoreHolder = $('#score');
   $scoreAnimated = $('.scoreAnimated');
@@ -220,19 +227,30 @@ $(() => {
 
   startGame();
 
+  // $().on('scroll', (e) => {
+  //   e.preventDefault();
+  // });
+
+  $().on('keydown', function(e) {
+    // space and arrow keys
+    if((e.keyName === e.key.toLowerCase().replace('arrow', '')) > -1) {
+      e.preventDefault();
+    }
+  }, false);
+
   $playAgainBtn.on('click', () => {
-    $wrapperAnimated.addClass('animated pulse');
-    // $wrapperAnimated.css({ color: 'gold' });
-    setTimeout(() => {
-      $wrapperAnimated.removeClass('animated pulse');
-      // $scoreAnimated.css({ color: 'black' });
-    }, 500);
+    // $wrapperAnimated.addClass('animated pulse');
+    // setTimeout(() => {
+    //   $wrapperAnimated.removeClass('animated pulse');
+    // }, 500);
     clearInterval(snakeTimer);
     $cells.html('');
     snake = [0,1,2];
     score = 0;
     lives = 3;
     $cells.removeClass('snake head letter');
+    $container.removeClass('hidden');
+    $endGameScreen.addClass('hidden');
     startGame();
     if (wordsArray.length === 0) {
       wordsArray = [{
@@ -242,7 +260,7 @@ $(() => {
         answer: 'cake',
         hint: 'Victoria sponge, carrot, coffee, chocolate.'
       },{
-        answer: 'Ant',
+        answer: 'ant',
         hint: '6 legs, black body, live in colonies, worship their queen.'
       },{
         answer: 'picnic',

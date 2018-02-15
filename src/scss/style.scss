@@ -1,41 +1,72 @@
+@font-face {
+    font-family: 'chintzy'; /*a name to be used later*/
+    src: url('/fonts/chintzy.ttf'); /*URL to font*/
+}
+
 * {
   box-sizing: border-box;
-  font-family: 'Nova Square', cursive;
+  font-family: 'chintzy';
   .hidden {
     display: none;
   }
-  .endGame, .startGame {
-    background-color: red;
+  .endGame{
+    background-image: url(/images/game-over.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     width: 100vw;
     height: 100vh;
-    padding: none;
+    padding: 0;
+    button {
+      position: absolute;
+      top: 60%;
+      left: 47%;
+      z-index: 1;
+    }
+  &.startGame {
+    background-image: url(/images/spelling-ant.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
     // z-index: 1;
   }
+}
   body {
-    background-color: #c6e883;
+    // background-color: #c6e883;
+    background-image: url(/images/grass.png);
     display: flex;
     justify-content: center;
     margin: 0;
     .playAgainBtn {
       display: flex;
       justify-content: center;
-    button {
-      font-size: 20px;
-      margin-top: 10px;
-      border: 1px solid black;
-      // display: none;
+      button {
+        font-size: 20px;
+        margin: 10px 0;
+        border: 1px solid black;
+        // display: none;
+      }
     }
-  }
     .wrapper {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border: 1px solid black;
+      // border: 1px solid black;
       border-radius: 10px;
-      // background-color: pink;
       padding: 10px 10px 0 10px;
+      width: 502px;
+      background-image: url(/images/wrapper-bricks.png);
+      color: #ce3d42;
+      .hint {
+        text-align: center;
+      }
       .score, .lives {
         font-size: 20px;
+        display: block;
+        text-align: center;
       }
     }
     .snake {
@@ -47,7 +78,6 @@
     .letter, .head {
       background-image: url(/images/crumb.png);
       text-align: center;
-      // color: white;
     }
     h1 {
       color: green;
@@ -56,47 +86,40 @@
       margin-top: 0;
     }
     .wordHolder {
-      // ul {
+      margin: 0;
+      display: block;
+      padding: 0;
+      padding-top: 10px;
+      text-align: center;
+      li {
+        position: relative;
+        list-style: none;
         margin: 0;
-        display: block;
-        padding: 0;
-        padding-top: 10px;
-        text-align: center;
-        li {
-          position: relative;
-          list-style: none;
-          margin: 0;
-          padding: 0 10px 10px 10px;
-          display: inline-block;
-          font-size: 1.6rem;
-        }
-      // }
+        padding: 0 10px 10px 10px;
+        display: inline-block;
+        font-size: 1.6rem;
+      }
     }
     .gameBoard {
-    ul {
-      background-image: url(/images/picnic-blanket.png);
-      // opacity: 50%;
-      display: flex;
-      flex-wrap: wrap;
-      width: 502px;
-      // margin: 0;
-      padding: 0;
-      list-style: none;
-      margin: auto;
-      border-radius: 10px;
-      // line-height: 10px;
-      // font-size: 10px;
-      // border: 1px solid black;
-      li {
-        // background-color: pink;
-        // border: 1px solid black;
-        height: 50px;
-        width: 50px;
-        font-size: 25px;
-        line-height: 40px;
+      ul {
+        background-image: url(/images/picnic-blanket.png);
+        display: flex;
+        flex-wrap: wrap;
+        width: 502px;
+        padding: 0;
+        list-style: none;
+        margin: auto;
         border-radius: 10px;
+        // border: 1px solid black;
+        li {
+          // border: 1px solid black;
+          height: 50px;
+          width: 50px;
+          font-size: 25px;
+          line-height: 40px;
+          border-radius: 10px;
         }
-      }
       }
     }
   }
+}

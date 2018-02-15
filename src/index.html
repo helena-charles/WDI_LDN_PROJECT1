@@ -11,27 +11,29 @@
   <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
 </head>
 <body>
-  <div class="hidden startGame">
+  <div class="startGameScreen">
     <p>HELLO</p>
   </div>
-  <div class="hidden endGame">
-    <p>GOODBYE</p>
+  <div class="hidden endGameScreen">
+    <div class="playAgainBtn">
+      <button>PLAY AGAIN?</button>
+    </div>
   </div>
   <div class="container">
-    <h1>Ant Words</h1>
+    <!-- <h1>Ant Words</h1> -->
     <div class="wrapper wrapperAnimated">
-      <div class="score">
-        <p class="scoreAnimated">Score: <span id="score">0</span></p>
+      <div class="score scoreAnimated">
+        <p class="score">SCORE</p><span id="score">0</span>
       </div>
       <div class="columnWrapper">
         <div class="hint">
-          <span>Hint: <span id="hint"></span></span>
+          <span>HINT: <span id="hint"></span></span>
         </div>
         <div class="wordHolder">
         </div>
       </div>
-      <div class="lives">
-        <p class="livesAnimated">Lives: <span id="lives">3</span></p>
+      <div class="lives livesAnimated">
+        <p class="lives">LIVES</p><span id="lives">3</span>
       </div>
     </div>
     <div class="gameBoard">
@@ -150,7 +152,7 @@
       </ul>
     </div>
     <div class="playAgainBtn">
-      <button>Play again?</button>
+      <button>PLAY AGAIN?</button>
     </div>
 </div>
 </body>
