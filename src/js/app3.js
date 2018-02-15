@@ -5,6 +5,7 @@ let $wordHolder = [];
 let lives = 3;
 let $livesHolder = [];
 let $scoreHolder = [];
+let $scoreAnimated = [];
 let $hintHolder = [];
 let $playAgainBtn = [];
 const width = 10;
@@ -65,6 +66,10 @@ function endGame() {
 function incrementScore() {
   score++;
   $scoreHolder.text(score);
+  $scoreAnimated.addClass('animated pulse');
+  setTimeout(() => {
+    $scoreAnimated.removeClass('animated pulse');
+  }, 2000);
 }
 
 function decrementLives() {
@@ -195,6 +200,7 @@ $(() => {
   $endGame = $('.endGame');
 
   $scoreHolder = $('#score');
+  $scoreAnimated = $('.scoreAnimated');
   $playAgainBtn = $('.playAgainBtn');
 
   startGame();

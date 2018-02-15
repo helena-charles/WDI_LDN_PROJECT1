@@ -33,15 +33,9 @@
       border-radius: 10px;
       // background-color: pink;
       padding-top: 10px;
-      .score {
+      .score, .lives {
         font-size: 20px;
       }
-    }
-    .pause {
-    //   i {
-    //     color: white;
-    //     background-color: white;
-    // }
     }
     .snake {
       background-image: url(/images/normal-ant.png);
