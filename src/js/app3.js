@@ -6,6 +6,8 @@ let lives = 3;
 let $livesHolder = [];
 let $scoreHolder = [];
 let $scoreAnimated = [];
+let $livesAnimated = [];
+let $wrapperAnimated = [];
 let $hintHolder = [];
 let $playAgainBtn = [];
 const width = 10;
@@ -15,7 +17,8 @@ let direction = 'right';
 let snakeTimer = null;
 let foundLetters = [];
 let $container = [];
-let $endGame = [];
+let $endGameScreen = [];
+let $startGameScreen = [];
 let correctLetters = [];
 let incorrectLetters = [];
 let randomWord = {};
@@ -67,8 +70,9 @@ function endGame() {
   console.log('you lose');
   $cells.removeClass('letter');
   $cells.text('');
+  $livesHolder.text('0');
   // $container.addClass('hidden');
-  // $endGame.removeClass('hidden');
+  // $endGameScreen.removeClass('hidden');
   // TODO: do other shit
 }
 
@@ -76,15 +80,24 @@ function incrementScore() {
   score++;
   $scoreHolder.text(score);
   $scoreAnimated.addClass('animated pulse');
+  $scoreAnimated.css({ color: 'gold' });
   setTimeout(() => {
     $scoreAnimated.removeClass('animated pulse');
-  }, 2000);
+    $scoreAnimated.css({ color: 'black' });
+  }, 1000);
 }
 
 function decrementLives() {
   lives--;
   $livesHolder.text(lives);
   if(lives < 1) endGame();
+  $livesAnimated.addClass('animated pulse');
+  $livesAnimated.css({ color: 'red' });
+  setTimeout(() => {
+    $livesAnimated.removeClass('animated pulse');
+    $livesAnimated.css({ color: 'black' });
+
+  }, 1000);
 }
 
 function playMunch() {
@@ -135,7 +148,7 @@ function drawSnake(amount) {
     nextCellIndex < 0 ||
     nextCellIndex > width * width -1
   ) {
-    endGame();
+    return endGame();
   }
 
   // remove snake
@@ -197,15 +210,23 @@ $(() => {
   $livesHolder = $('#lives');
   $hintHolder = $('#hint');
   $container = $('.container');
-  $endGame = $('.endGame');
+  $endGameScreen = $('.endGame');
 
   $scoreHolder = $('#score');
   $scoreAnimated = $('.scoreAnimated');
+  $livesAnimated = $('.livesAnimated');
+  $wrapperAnimated = $('.wrapperAnimated');
   $playAgainBtn = $('.playAgainBtn');
 
   startGame();
 
   $playAgainBtn.on('click', () => {
+    $wrapperAnimated.addClass('animated pulse');
+    // $wrapperAnimated.css({ color: 'gold' });
+    setTimeout(() => {
+      $wrapperAnimated.removeClass('animated pulse');
+      // $scoreAnimated.css({ color: 'black' });
+    }, 500);
     clearInterval(snakeTimer);
     $cells.html('');
     snake = [0,1,2];
@@ -213,7 +234,6 @@ $(() => {
     lives = 3;
     $cells.removeClass('snake head letter');
     startGame();
-    console.log(wordsArray);
     if (wordsArray.length === 0) {
       wordsArray = [{
         answer: 'sandwich',

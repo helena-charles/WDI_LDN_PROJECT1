@@ -11,12 +11,15 @@
   <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
 </head>
 <body>
-  <div class="hidden endGame">
+  <div class="hidden startGame">
     <p>HELLO</p>
+  </div>
+  <div class="hidden endGame">
+    <p>GOODBYE</p>
   </div>
   <div class="container">
     <h1>Ant Words</h1>
-    <div class="wrapper">
+    <div class="wrapper wrapperAnimated">
       <div class="score">
         <p class="scoreAnimated">Score: <span id="score">0</span></p>
       </div>
@@ -28,7 +31,7 @@
         </div>
       </div>
       <div class="lives">
-        <span>Lives: <span id="lives">3</span></span>
+        <p class="livesAnimated">Lives: <span id="lives">3</span></p>
       </div>
     </div>
     <div class="gameBoard">
