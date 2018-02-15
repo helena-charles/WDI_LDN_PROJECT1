@@ -45,9 +45,11 @@
     h1 {
       color: green;
       text-align: center;
+      margin-bottom: 20px;
+      margin-top: 0;
     }
     .wordHolder {
-      ul {
+      // ul {
         margin: 0;
         display: block;
         padding: 0;
@@ -61,7 +63,7 @@
           display: inline-block;
           font-size: 1.6rem;
         }
-      }
+      // }
     }
     .gameBoard {
     ul {
@@ -77,7 +79,7 @@
       border-radius: 10px;
       // line-height: 10px;
       // font-size: 10px;
-      border: 1px solid black;
+      border: 1px solid white;
       li {
         // background-color: pink;
         // border: 1px solid black;

@@ -182,8 +182,8 @@ $(() => {
   // Direction change function
   function setIntervalCallback() {
     move();
-    if($cells.eq(n).hasClass('yellow')) eatFood();
-    else if($cells.eq(n).hasClass('incorrectMF')) removeLife();
+    if($cells.eq(n).hasClass('letter')) eatLetter();
+    else if($('head').hasClass('incorrectLetter')) removeLife();
     n = snake.slice(-1)[0];
     $cells.removeClass('snakeHead');
     $cells.eq(n).removeClass('green').addClass('snakeHead');

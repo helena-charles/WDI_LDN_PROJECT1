@@ -5,13 +5,14 @@ let $wordHolder = [];
 let lives = 3;
 let $livesHolder = [];
 let $scoreHolder = [];
+let $hintHolder = [];
 let $playAgainBtn = [];
 const width = 10;
 let score = 0;
 const snake = [0,1,2];
 let direction = 'right';
 let snakeTimer = null;
-const foundLetters = [];
+let foundLetters = [];
 const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let correctLetters = [];
 let incorrectLetters = [];
@@ -35,22 +36,24 @@ const wordsArray = [{
 
 function startGame() {
   // TODO: clear out foundLetters
-  // updateLetters
+  foundLetters = [];
   randomWord = getRandomWord();
   correctLetters = randomWord.answer.split('');
   incorrectLetters = allLetters.filter(letter => !randomWord.answer.includes(letter));
-
-  updateLetters();
 
   snake.forEach(index => $cells.eq(index).addClass('snake'));
   $cells.eq(snake[snake.length-1]).addClass('head');
 
   snakeTimer = setInterval(move, 500);
+  updateLetters();
   placeLetters();
 }
 
 function endGame() {
   clearInterval(snakeTimer);
+  console.log('you lose');
+  $cells.removeClass('letter');
+  $cells.text('');
   // TODO: do other shit
 }
 
@@ -71,14 +74,19 @@ function checkForLetter(nextCellIndex) {
 
   if($nextCell.hasClass('letter')) {
     const letter = $nextCell.text();
+    const letterIndex = correctLetters.indexOf(letter);
     if(randomWord.answer.includes(letter)) {
       foundLetters.push(letter);
+      correctLetters.splice(letterIndex, 1);
       snakeShouldGrow = true;
       updateLetters();
       incrementScore();
 
       // TODO: once all letters have been found (foundLetters.length === answer.length)
-      // startGame()
+      if (foundLetters.length === randomWord.answer.length) {
+        clearInterval(snakeTimer);
+        startGame();
+      }
     } else {
       decrementLives();
     }
@@ -91,7 +99,6 @@ function checkForLetter(nextCellIndex) {
 }
 
 function drawSnake(amount) {
-
   const currentCellIndex = snake[snake.length-1];
   const nextCellIndex = currentCellIndex+amount;
   const $nextCell = $cells.eq(nextCellIndex);
@@ -102,10 +109,17 @@ function drawSnake(amount) {
     currentCellIndex % width === 0 && direction === 'left' ||
     currentCellIndex % width === width-1 && direction === 'right' ||
     nextCellIndex < 0 ||
-    nextCellIndex > width * width - 1
+    nextCellIndex > width * width -1
   ) {
     endGame();
   }
+
+  // if(nextSquare < 0 ||
+  //   nextSquare > width * height -1 ||
+  //   n % width === 0 && direction === 'left' ||
+  //   n % width === width-1 && direction === 'right' ||
+  //   $(cells[nextSquare]).hasClass('green') ||
+  //   lives === 0
 
   // remove snake
   snake.forEach(index => $cells.eq(index).removeClass('snake head'));
@@ -125,9 +139,11 @@ function getRandomWord() {
 
 function updateLetters() {
   $wordHolder.empty();
+  $hintHolder.empty();
   randomWord.answer.split('').forEach(letter => {
     const content = foundLetters.includes(letter) ? letter : '-';
     $wordHolder.append(`<li>${content}</li>`);
+    $hintHolder.html(randomWord.hint);
   });
 }
 
@@ -139,9 +155,12 @@ function placeRandomLetter(letter) {
   $cells.eq(randomIndex).addClass('letter').html(letter);
 }
 
-function placeLetters() {
+function placeLetters(letter) {
   // TODO: make sure correctLetter is not in foundLetters
+  // if (!foundLetters.includes(letter)) {
+  console.log(letter);
   placeRandomLetter(correctLetters[Math.floor(Math.random() * correctLetters.length)]);
+  // }
   placeRandomLetter(incorrectLetters[Math.floor(Math.random() * incorrectLetters.length)]);
 }
 
@@ -163,6 +182,7 @@ $(() => {
   $cells = $('li');
   $wordHolder = $('.wordHolder');
   $livesHolder = $('#lives');
+  $hintHolder = $('#hint');
 
   $scoreHolder = $('#score');
   $playAgainBtn = $('.playAgainBtn');
