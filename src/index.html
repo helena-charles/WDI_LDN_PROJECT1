@@ -10,8 +10,11 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
+  <div class="hidden endGame">
+    <p>HELLO</p>
+  </div>
   <div class="container">
-    <h1>Snake Words</h1>
+    <h1>Ant Words</h1>
     <div class="wrapper">
       <div class="score">
         <p>Score: <span id="score">0</span></p>
@@ -28,6 +31,7 @@
       </div>
     </div>
     <div class="gameBoard">
+      <audio></audio>
       <ul id="board">
         <!-- Row 1 -->
         <li class="boardLi"></li>
@@ -144,6 +148,6 @@
     <div class="playAgainBtn">
       <button>Play again?</button>
     </div>
-  </div>
+</div>
 </body>
 </html>

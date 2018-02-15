@@ -13,6 +13,9 @@ const snake = [0,1,2];
 let direction = 'right';
 let snakeTimer = null;
 let foundLetters = [];
+let $container = [];
+let $endGame = [];
+
 const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let correctLetters = [];
 let incorrectLetters = [];
@@ -54,6 +57,8 @@ function endGame() {
   console.log('you lose');
   $cells.removeClass('letter');
   $cells.text('');
+  // $container.addClass('hidden');
+  // $endGame.removeClass('hidden');
   // TODO: do other shit
 }
 
@@ -68,6 +73,11 @@ function decrementLives() {
   if(lives < 1) endGame();
 }
 
+function playMunch() {
+  const audio = new Audio('/sounds/spuk1.wav');
+  audio.play();
+}
+
 function checkForLetter(nextCellIndex) {
   const $nextCell = $cells.eq(nextCellIndex);
   let snakeShouldGrow = false;
@@ -76,19 +86,19 @@ function checkForLetter(nextCellIndex) {
     const letter = $nextCell.text();
     const letterIndex = correctLetters.indexOf(letter);
     if(randomWord.answer.includes(letter)) {
+      playMunch();
       foundLetters.push(letter);
       correctLetters.splice(letterIndex, 1);
       snakeShouldGrow = true;
       updateLetters();
       incrementScore();
-
-      // TODO: once all letters have been found (foundLetters.length === answer.length)
       if (foundLetters.length === randomWord.answer.length) {
         clearInterval(snakeTimer);
         startGame();
       }
     } else {
       decrementLives();
+      playMunch();
     }
     $nextCell.removeClass('letter').text('');
     placeLetters(correctLetters, incorrectLetters);
@@ -156,8 +166,6 @@ function placeRandomLetter(letter) {
 }
 
 function placeLetters(letter) {
-  // TODO: make sure correctLetter is not in foundLetters
-  // if (!foundLetters.includes(letter)) {
   console.log(letter);
   placeRandomLetter(correctLetters[Math.floor(Math.random() * correctLetters.length)]);
   // }
@@ -183,6 +191,8 @@ $(() => {
   $wordHolder = $('.wordHolder');
   $livesHolder = $('#lives');
   $hintHolder = $('#hint');
+  $container = $('.container');
+  $endGame = $('.endGame');
 
   $scoreHolder = $('#score');
   $playAgainBtn = $('.playAgainBtn');
