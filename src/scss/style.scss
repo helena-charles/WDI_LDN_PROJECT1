@@ -22,7 +22,7 @@
       font-size: 20px;
       margin-top: 10px;
       border: 1px solid black;
-      display: none;
+      // display: none;
     }
   }
     .wrapper {
@@ -32,7 +32,7 @@
       border: 1px solid black;
       border-radius: 10px;
       // background-color: pink;
-      padding-top: 10px;
+      padding: 10px 10px 0 10px;
       .score, .lives {
         font-size: 20px;
       }

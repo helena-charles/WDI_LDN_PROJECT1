@@ -10,32 +10,41 @@ let $hintHolder = [];
 let $playAgainBtn = [];
 const width = 10;
 let score = 0;
-const snake = [0,1,2];
+let snake = [0,1,2];
 let direction = 'right';
 let snakeTimer = null;
 let foundLetters = [];
 let $container = [];
 let $endGame = [];
-
-const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let correctLetters = [];
 let incorrectLetters = [];
 let randomWord = {};
-const wordsArray = [{
-  answer: 'cat',
-  hint: 'Likes milk.'
+
+const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+let wordsArray = [{
+  answer: 'sandwich',
+  hint: 'Two pieces of bread with a filling between them.'
 },{
-  answer: 'fish',
-  hint: 'Lives in a bowl, short memory span.'
+  answer: 'cake',
+  hint: 'Victoria sponge, carrot, coffee, chocolate.'
 },{
-  answer: 'rat',
-  hint: 'Lives in sewers.'
+  answer: 'Ant',
+  hint: '6 legs, black body, live in colonies, worship their queen.'
 },{
-  answer: 'hamster',
-  hint: 'Runs in a wheel, sleeps in hay.'
+  answer: 'picnic',
+  hint: 'Bring a blanket to the park, bring your food in a basket.'
 },{
-  answer: 'dog',
-  hint: 'Man\'s best friend.'
+  answer: 'grass',
+  hint: 'Lawns are made of this green plant.'
+},{
+  answer: 'blanket',
+  hint: 'Keeps you warm, good for sitting on grass.'
+},{
+  answer: 'basket',
+  hint: 'Can be made of wicker, good for carrying things.'
+},{
+  answer: 'jam',
+  hint: 'A sweet spread made from fruit and sugar.'
 }];
 
 function startGame() {
@@ -129,13 +138,6 @@ function drawSnake(amount) {
     endGame();
   }
 
-  // if(nextSquare < 0 ||
-  //   nextSquare > width * height -1 ||
-  //   n % width === 0 && direction === 'left' ||
-  //   n % width === width-1 && direction === 'right' ||
-  //   $(cells[nextSquare]).hasClass('green') ||
-  //   lives === 0
-
   // remove snake
   snake.forEach(index => $cells.eq(index).removeClass('snake head'));
 
@@ -170,10 +172,8 @@ function placeRandomLetter(letter) {
   $cells.eq(randomIndex).addClass('letter').html(letter);
 }
 
-function placeLetters(letter) {
-  console.log(letter);
+function placeLetters() {
   placeRandomLetter(correctLetters[Math.floor(Math.random() * correctLetters.length)]);
-  // }
   placeRandomLetter(incorrectLetters[Math.floor(Math.random() * incorrectLetters.length)]);
 }
 
@@ -206,7 +206,41 @@ $(() => {
   startGame();
 
   $playAgainBtn.on('click', () => {
-    console.log('play again');
+    clearInterval(snakeTimer);
+    $cells.html('');
+    snake = [0,1,2];
+    score = 0;
+    lives = 3;
+    $cells.removeClass('snake head letter');
+    startGame();
+    console.log(wordsArray);
+    if (wordsArray.length === 0) {
+      wordsArray = [{
+        answer: 'sandwich',
+        hint: 'Two pieces of bread with a filling between them.'
+      },{
+        answer: 'cake',
+        hint: 'Victoria sponge, carrot, coffee, chocolate.'
+      },{
+        answer: 'Ant',
+        hint: '6 legs, black body, live in colonies, worship their queen.'
+      },{
+        answer: 'picnic',
+        hint: 'Bring a blanket to the park, bring your food in a basket.'
+      },{
+        answer: 'grass',
+        hint: 'Lawns are made of this green plant.'
+      },{
+        answer: 'blanket',
+        hint: 'Keeps you warm, good for sitting on grass.'
+      },{
+        answer: 'basket',
+        hint: 'Can be made of wicker, good for carrying things.'
+      },{
+        answer: 'jam',
+        hint: 'A sweet spread made from fruit and sugar.'
+      }];
+    }
   });
 
   $(document).on('keydown', setDirection);
