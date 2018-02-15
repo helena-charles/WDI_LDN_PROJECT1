@@ -31,16 +31,16 @@
     //     background-color: white;
     // }
     }
-    .green {
+    .snake {
       background-image: url(/images/normal-ant.png);
+      &.head {
+        background-image: url(/images/queen-ant.png);
+      }
     }
-    .yellow, .incorrectMF {
+    .letter, .head {
       background-image: url(/images/crumb.png);
       text-align: center;
       // color: white;
-    }
-    .snakeHead {
-      background-image: url(/images/queen-ant.png);
     }
     h1 {
       color: green;
@@ -65,6 +65,8 @@
     }
     .gameBoard {
     ul {
+      background-image: url(/images/picnic-blanket.png);
+      // opacity: 50%;
       display: flex;
       flex-wrap: wrap;
       width: 502px;
