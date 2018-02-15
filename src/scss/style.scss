@@ -9,7 +9,8 @@
   .hidden {
     display: none;
   }
-  .endGame{
+  .endGameScreen,
+  .startGameScreen {
     background-image: url(/images/game-over.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -19,20 +20,19 @@
     padding: 0;
     button {
       position: absolute;
-      top: 60%;
-      left: 47%;
+      top: 55%;
+      left: 45%;
       z-index: 1;
+      line-height: 60px;
+      height: 60px;
+      width: auto;
+      font-size: 40px;
+      border-radius: 10px;
+      // outline: none;
     }
-  &.startGame {
-    background-image: url(/images/spelling-ant.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    // z-index: 1;
-  }
+}
+.startGameScreen {
+  background-image: url(/images/spelling-ant.png);
 }
   body {
     // background-color: #c6e883;
@@ -40,17 +40,20 @@
     display: flex;
     justify-content: center;
     margin: 0;
-    .playAgainBtn {
+    .playAgainBtn,
+    .startGameButton {
       display: flex;
       justify-content: center;
       button {
         font-size: 20px;
         margin: 10px 0;
         border: 1px solid black;
+
         // display: none;
       }
     }
     .wrapper {
+      font-family: 'Nova Square', cursive !important;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -59,7 +62,7 @@
       padding: 10px 10px 0 10px;
       width: 502px;
       background-image: url(/images/wrapper-bricks.png);
-      color: #ce3d42;
+      color: white;
       .hint {
         text-align: center;
       }
@@ -67,7 +70,11 @@
         font-size: 20px;
         display: block;
         text-align: center;
+        span {
+          margin-bottom: 10px;
+        }
       }
+
     }
     .snake {
       background-image: url(/images/normal-ant.png);
@@ -78,6 +85,7 @@
     .letter, .head {
       background-image: url(/images/crumb.png);
       text-align: center;
+      font-family: 'Nova Square', cursive !important;
     }
     h1 {
       color: green;
