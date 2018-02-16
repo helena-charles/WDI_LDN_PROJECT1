@@ -34,11 +34,8 @@ let wordsArray = [{
   answer: 'ANT',
   hint: '6 LEGS, LIVE IN COLONIES, WORSHIP THEIR QUEEN.'
 },{
-  answer: 'PICNIC',
-  hint: 'BRING A BLANKET TO THE PARK, BRING YOUR FOOD IN A BASKET.'
-},{
-  answer: 'GRASS',
-  hint: 'LAWNS ARE MADE OF THIS GREEN PLANT.'
+  answer: 'PARK',
+  hint: 'GRASSY AREA, USUALLY POPULATED WITH DOGS, BENCHES, AND PLAYGROUNDS.'
 },{
   answer: 'BLANKET',
   hint: 'KEEPS YOU WARM, GOOD FOR SITTING ON GRASS.'
@@ -46,8 +43,41 @@ let wordsArray = [{
   answer: 'BASKET',
   hint: 'CAN BE MADE OF WICKER, GOOD FOR CARRYING THINGS.'
 },{
+  answer: 'WASP',
+  hint: 'THE EVIL VERSION OF A BEE.'
+},{
+  answer: 'WATER',
+  hint: 'H2O.'
+},{
+  answer: 'JUICE',
+  hint: 'DRINK MADE FROM THE LIQUID IN FRUIT.'
+},{
+  answer: 'FLOWERS',
+  hint: 'PRETTY PLANTS WITH COLOURFUL PETALS.'
+},{
+  answer: 'CHAIR',
+  hint: 'SIT ON THIS AT THE TABLE, OR ON THE GRASS.'
+},{
+  answer: 'GAME',
+  hint: 'A FUN ACTIVITY WITH RULES AND A WINNER.'
+},{
   answer: 'JAM',
   hint: 'A SWEET SPREAD MADE FROM FRUIT AND SUGAR.'
+},{
+  answer: 'LAKE',
+  hint: 'BODY OF WATER, YOU MIGHT ROW BOATS ON IT IN THE PARK.'
+},{
+  answer: 'CUTLERY',
+  hint: 'USE THIS SILVERWARE TO EAT FOOD. KNIVES, FORKS, SPOONS.'
+},{
+  answer: 'HAMPER',
+  hint: 'ANOTHER WORD FOR BASKET, YOU MIGHT FIND TREATS IN THEM AT CHRISTMAS.'
+},{
+  answer: 'PLATE',
+  hint: 'EAT FOOD OFF OF THIS, SOMETIMES PAPER, SOMETIMES CHINA.'
+},{
+  answer: 'RUG',
+  hint: 'SIT ON IT ON THE GRASS, ANOTHER WORD FOR BLANKET.'
 }];
 
 function startGame() {
@@ -263,17 +293,17 @@ $(() => {
         answer: 'SANDWICH',
         hint: 'TWO PIECES OF BREAD WITH A FILLING BETWEEN THEM.'
       },{
+        answer: 'LAKE',
+        hint: 'BODY OF WATER, YOU MIGHT ROW BOATS ON IT IN THE PARK.'
+      },{
         answer: 'CAKE',
         hint: 'VICTORIA SPONGE, CARROT, COFFEE, CHOCOLATE.'
       },{
         answer: 'ANT',
         hint: '6 LEGS, LIVE IN COLONIES, WORSHIP THEIR QUEEN.'
       },{
-        answer: 'PICNIC',
-        hint: 'BRING A BLANKET TO THE PARK, BRING YOUR FOOD IN A BASKET.'
-      },{
-        answer: 'GRASS',
-        hint: 'LAWNS ARE MADE OF THIS GREEN PLANT.'
+        answer: 'PARK',
+        hint: 'GRASSY AREA, USUALLY POPULATED WITH DOGS, BENCHES, AND PLAYGROUNDS.'
       },{
         answer: 'BLANKET',
         hint: 'KEEPS YOU WARM, GOOD FOR SITTING ON GRASS.'
@@ -281,8 +311,29 @@ $(() => {
         answer: 'BASKET',
         hint: 'CAN BE MADE OF WICKER, GOOD FOR CARRYING THINGS.'
       },{
+        answer: 'WASP',
+        hint: 'THE EVIL VERSION OF A BEE.'
+      },{
+        answer: 'WATER',
+        hint: 'H2O.'
+      },{
+        answer: 'JUICE',
+        hint: 'DRINK MADE FROM THE LIQUID IN FRUIT.'
+      },{
+        answer: 'FLOWERS',
+        hint: 'PRETTY PLANTS WITH COLOURFUL PETALS.'
+      },{
+        answer: 'CHAIR',
+        hint: 'SIT ON THIS AT THE TABLE, OR ON THE GRASS.'
+      },{
+        answer: 'GAME',
+        hint: 'A FUN ACTIVITY WITH RULES AND A WINNER.'
+      },{
         answer: 'JAM',
         hint: 'A SWEET SPREAD MADE FROM FRUIT AND SUGAR.'
+      },{
+        answer: 'CUTLERY',
+        hint: 'USE THIS SILVERWARE TO EAT FOOD. KNIVES, FORKS, SPOONS.'
       }];
     }
   });
