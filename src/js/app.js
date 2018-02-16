@@ -7,7 +7,6 @@ let $livesHolder = [];
 let $scoreHolder = [];
 let $scoreAnimated = [];
 let $livesAnimated = [];
-let $wrapperAnimated = [];
 let $hintHolder = [];
 let $playAgainBtn = [];
 const width = 10;
@@ -24,30 +23,30 @@ let incorrectLetters = [];
 let randomWord = {};
 let $startGameButton = [];
 
-const allLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const allLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let wordsArray = [{
-  answer: 'sandwich',
+  answer: 'SANDWICH',
   hint: 'TWO PIECES OF BREAD WITH A FILLING BETWEEN THEM.'
 },{
-  answer: 'cake',
+  answer: 'CAKE',
   hint: 'VICTORIA SPONGE, CARROT, COFFEE, CHOCOLATE.'
 },{
-  answer: 'ant',
+  answer: 'ANT',
   hint: '6 LEGS, LIVE IN COLONIES, WORSHIP THEIR QUEEN.'
 },{
-  answer: 'picnic',
+  answer: 'PICNIC',
   hint: 'BRING A BLANKET TO THE PARK, BRING YOUR FOOD IN A BASKET.'
 },{
-  answer: 'grass',
+  answer: 'GRASS',
   hint: 'LAWNS ARE MADE OF THIS GREEN PLANT.'
 },{
-  answer: 'blanket',
+  answer: 'BLANKET',
   hint: 'KEEPS YOU WARM, GOOD FOR SITTING ON GRASS.'
 },{
-  answer: 'basket',
+  answer: 'BASKET',
   hint: 'CAN BE MADE OF WICKER, GOOD FOR CARRYING THINGS.'
 },{
-  answer: 'jam',
+  answer: 'JAM',
   hint: 'A SWEET SPREAD MADE FROM FRUIT AND SUGAR.'
 }];
 
@@ -75,6 +74,10 @@ function endGame() {
   $cells.text('');
   $livesHolder.text('0');
   $container.addClass('hidden');
+  $scoreHolder.text(score);
+  $('.endScoreSpan').text(score);
+  $('.endScoreHolder').css({ color: 'white', position: 'absolute', top: '50%', left: '43%', fontSize: '40px', textShadow: '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black' });
+
   $endGameScreen.removeClass('hidden');
   const gameOverSound = new Audio('/sounds/game-over.wav');
   gameOverSound.play();
@@ -89,7 +92,7 @@ function incrementScore() {
   $scoreAnimated.css({ color: 'gold' });
   setTimeout(() => {
     $scoreAnimated.removeClass('animated pulse');
-    $scoreAnimated.css({ color: 'black' });
+    $scoreAnimated.css({ color: 'white' });
   }, 1000);
 }
 
@@ -101,7 +104,7 @@ function decrementLives() {
   $livesAnimated.css({ color: 'red' });
   setTimeout(() => {
     $livesAnimated.removeClass('animated pulse');
-    $livesAnimated.css({ color: 'black' });
+    $livesAnimated.css({ color: 'white' });
 
   }, 1000);
 }
@@ -207,8 +210,6 @@ function move() {
   if(direction === 'down') drawSnake(width);
 }
 
-
-
 $(() => {
   console.log('JS Loaded');
 
@@ -225,19 +226,15 @@ $(() => {
   $scoreHolder = $('#score');
   $scoreAnimated = $('.scoreAnimated');
   $livesAnimated = $('.livesAnimated');
-  $wrapperAnimated = $('.wrapperAnimated');
   $playAgainBtn = $('.playAgainBtn');
 
   $container.addClass('hidden');
 
   $startGameButton.on('click', () => {
+    score = 0;
+    lives = 3;
     startGame();
   });
-  //startGame();
-
-  // $().on('scroll', (e) => {
-  //   e.preventDefault();
-  // });
 
   $().on('keydown', function(e) {
     // space and arrow keys
@@ -247,44 +244,45 @@ $(() => {
   }, false);
 
   $playAgainBtn.on('click', () => {
-    // $wrapperAnimated.addClass('animated pulse');
-    // setTimeout(() => {
-    //   $wrapperAnimated.removeClass('animated pulse');
-    // }, 500);
     clearInterval(snakeTimer);
     $cells.html('');
+    direction = 'right';
     snake = [0,1,2];
-    score = 0;
     lives = 3;
+    score = 0;
+    $scoreHolder.text(score);
+    $('.endScoreSpan').text(score);
+    $('.endScoreHolder').css({ color: 'white', position: 'absolute', top: '50%', left: '44%', fontSize: '40px' });
+    $livesHolder.text(lives);
     $cells.removeClass('snake head letter');
     $container.removeClass('hidden');
     $endGameScreen.addClass('hidden');
     startGame();
     if (wordsArray.length === 0) {
       wordsArray = [{
-        answer: 'sandwich',
-        hint: 'Two pieces of bread with a filling between them.'
+        answer: 'SANDWICH',
+        hint: 'TWO PIECES OF BREAD WITH A FILLING BETWEEN THEM.'
       },{
-        answer: 'cake',
-        hint: 'Victoria sponge, carrot, coffee, chocolate.'
+        answer: 'CAKE',
+        hint: 'VICTORIA SPONGE, CARROT, COFFEE, CHOCOLATE.'
       },{
-        answer: 'ant',
-        hint: '6 legs, black body, live in colonies, worship their queen.'
+        answer: 'ANT',
+        hint: '6 LEGS, LIVE IN COLONIES, WORSHIP THEIR QUEEN.'
       },{
-        answer: 'picnic',
-        hint: 'Bring a blanket to the park, bring your food in a basket.'
+        answer: 'PICNIC',
+        hint: 'BRING A BLANKET TO THE PARK, BRING YOUR FOOD IN A BASKET.'
       },{
-        answer: 'grass',
-        hint: 'Lawns are made of this green plant.'
+        answer: 'GRASS',
+        hint: 'LAWNS ARE MADE OF THIS GREEN PLANT.'
       },{
-        answer: 'blanket',
-        hint: 'Keeps you warm, good for sitting on grass.'
+        answer: 'BLANKET',
+        hint: 'KEEPS YOU WARM, GOOD FOR SITTING ON GRASS.'
       },{
-        answer: 'basket',
-        hint: 'Can be made of wicker, good for carrying things.'
+        answer: 'BASKET',
+        hint: 'CAN BE MADE OF WICKER, GOOD FOR CARRYING THINGS.'
       },{
-        answer: 'jam',
-        hint: 'A sweet spread made from fruit and sugar.'
+        answer: 'JAM',
+        hint: 'A SWEET SPREAD MADE FROM FRUIT AND SUGAR.'
       }];
     }
   });

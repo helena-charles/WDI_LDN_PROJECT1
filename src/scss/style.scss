@@ -3,14 +3,28 @@
     src: url('/fonts/chintzy.ttf'); /*URL to font*/
 }
 
+.container {
+  font-family: 'Nova Flat', cursive;
+  button {
+    line-height: 60px;
+    height: 60px;
+    width: auto;
+    font-size: 40px;
+    border-radius: 10px;
+    outline: none;
+    font-family: 'chintzy';
+  }
+}
+
 * {
   box-sizing: border-box;
-  font-family: 'chintzy';
+  // font-family: 'chintzy';
   .hidden {
     display: none;
   }
   .endGameScreen,
   .startGameScreen {
+    font-family: 'chintzy';
     background-image: url(/images/game-over.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,7 +34,9 @@
     padding: 0;
     button {
       position: absolute;
-      top: 55%;
+      font-family: 'chintzy';
+
+      top: 62%;
       left: 45%;
       z-index: 1;
       line-height: 60px;
@@ -28,7 +44,8 @@
       width: auto;
       font-size: 40px;
       border-radius: 10px;
-      // outline: none;
+      outline: none;
+
     }
 }
 .startGameScreen {
@@ -48,12 +65,12 @@
         font-size: 20px;
         margin: 10px 0;
         border: 1px solid black;
-
+        outline: none;
         // display: none;
       }
     }
     .wrapper {
-      font-family: 'Nova Square', cursive !important;
+      font-family: 'Nova Flat', cursive;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -70,6 +87,7 @@
         font-size: 20px;
         display: block;
         text-align: center;
+        margin: 10px 0;
         span {
           margin-bottom: 10px;
         }
@@ -85,7 +103,7 @@
     .letter, .head {
       background-image: url(/images/crumb.png);
       text-align: center;
-      font-family: 'Nova Square', cursive !important;
+      font-family: 'Nova Flat', cursive;
     }
     h1 {
       color: green;
